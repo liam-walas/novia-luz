@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensajes de Amor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        h1 {
+            color: white;
+        }
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            width: 250px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .card-content {
+            display: none;
+        }
+        .card.open .card-content {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <audio autoplay loop>
+        <source src="wwd.mp3juice.blog - Camilo - Favorito (Concierto en Casa).mp3" type="audio/mp3">
+        Tu navegador no soporta la reproducción de audio.
+    </audio>
+    
+    <h1>ERES LA LUZ QUE ILUMINA MI MUNDO</h1>
+    <div class="card-container">
+        <div class="card" onclick="toggleCard(this)">
+            <h3>Mensaje 1</h3>
+            <p class="card-content">Eres la luz de mi vida y mi razón de sonreír cada día. 💖</p>
+        </div>
+        <div class="card" onclick="toggleCard(this)">
+            <h3>Mensaje 2</h3>
+            <p class="card-content">Cada momento contigo es un regalo que atesoro con todo mi corazón. 💕</p>
+        </div>
+        <div class="card" onclick="toggleCard(this)">
+            <h3>Mensaje 3</h3>
+            <p class="card-content">Eres mi mejor historia de amor y mi destino favorito. 😍</p>
+        </div>
+    </div>
+
+    <script>
+        function toggleCard(element) {
+            element.classList.toggle("open");
+        }
+    </script>
+</body>
+</html>

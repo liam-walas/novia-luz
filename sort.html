@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trivia de Amor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        h1 {
+            color: white;
+        }
+        .trivia-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+        .question {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+        .options button {
+            background-color: #ff3366;
+            color: white;
+            border: none;
+            padding: 10px;
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .options button:hover {
+            background-color: #ff0055;
+        }
+        .message {
+            margin-top: 15px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body> 
+    <audio reproduction>
+        <source src="wwd.mp3juice.blog - 3AM - Dime (Letra)  Rain City ☔️.mp3" type="audio/mp3">
+        Tu navegador no soporta la reproducción de audio.
+    </audio>
+    
+    <h1>Trivia de Amor</h1>
+    <div class="trivia-container">
+        <p class="question" id="question"></p>
+        <div class="options" id="options"></div>
+        <p class="message" id="message"></p>
+    </div>
+
+    <script>
+        const preguntas = [
+            { pregunta: "¿Qué es lo que más amo de ti?", opciones: ["Tu sonrisa", "Tu peinado", "Tu corazón", "Tus zapatos"], correcta: 0 },
+            { pregunta: "¿Cuál es mi momento favorito contigo?", opciones: ["Cuando reimos", "Cuando comemos bollos", "Cuando jugamos videojuegos", "Cuando estás seria"], correcta: 1 },
+            { pregunta: "¿Qué color me recuerda a ti?", opciones: ["Rojo", "Azul", "Rosa", "Verde"], correcta: 2 },
+            { pregunta: "¿Qué me encanta de tu personalidad?", opciones: ["Tu alegría", "Tu paciencia", "Tu valentía", "Todas las anteriores"], correcta: 3 },
+            { pregunta: "¿Qué me gusta más de tus abrazos?", opciones: ["Son cálidos", "Me hacen sentir seguro", "Son mágicos", "Todo lo anterior"], correcta: 3 }
+        ];
+
+        let preguntaActual = 0;
+
+        function mostrarPregunta() {
+            let pregunta = preguntas[preguntaActual];
+            document.getElementById("question").textContent = pregunta.pregunta;
+            let opcionesHTML = "";
+            pregunta.opciones.forEach((opcion, index) => {
+                opcionesHTML += `<button onclick='checkAnswer(${index})'>${opcion}</button>`;
+            });
+            document.getElementById("options").innerHTML = opcionesHTML;
+        }
+
+        function checkAnswer(index) {
+            let pregunta = preguntas[preguntaActual];
+            let message = document.getElementById("message");
+            if (index === pregunta.correcta) {
+                message.textContent = "¡Correcto! Esa es una de las razones por las que te amo 💖";
+                message.style.color = "green";
+            } else {
+                message.textContent = "No, pero igual eres perfecta para mí 💕";
+                message.style.color = "red";
+            }
+            preguntaActual++;
+            if (preguntaActual < preguntas.length) {
+                setTimeout(mostrarPregunta, 2000);
+            } else {
+                setTimeout(() => { message.textContent = "¡Terminaste la trivia, te amo! ❤️"; }, 2000);
+            }
+        }
+
+        mostrarPregunta();
+    </script>
+</body>
+</html>
